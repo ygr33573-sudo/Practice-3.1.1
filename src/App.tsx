@@ -277,7 +277,13 @@ export default function App() {
 
         {/* Services Section */}
         <section id="services" className="py-24 max-w-7xl mx-auto px-6">
-          <div className="flex items-end justify-between mb-16 gap-4 flex-wrap">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex items-end justify-between mb-16 gap-4 flex-wrap"
+          >
             <div className="max-w-2xl">
               <p className="text-medical-primary font-bold text-xs uppercase tracking-widest mb-4">Nos Expertises</p>
               <h2 className="text-4xl font-display font-medium leading-[1.2]">
@@ -287,13 +293,17 @@ export default function App() {
             <p className="text-medical-muted max-w-md">
               Dr. Benali et son équipe vous accueillent dans un cadre moderne pour des soins personnalisés, alliant rigueur clinique et approche humaine.
             </p>
-          </div>
+          </motion.div>
 
           <div className="space-y-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Consultation Card */}
-              <motion.div 
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 whileHover={{ y: -10 }}
+                transition={{ delay: 0.16, duration: 0.6 }}
                 className="md:col-span-2 medical-card p-0 flex flex-col md:flex-row overflow-hidden border-none shadow-sm bg-slate-50"
               >
                 <div className="p-8 md:w-3/5 flex flex-col justify-center">
@@ -322,8 +332,12 @@ export default function App() {
               </motion.div>
 
               {/* Specialised Care Card */}
-              <motion.div 
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 whileHover={{ y: -10 }}
+                transition={{ delay: 0.24, duration: 0.6 }}
                 className="medical-card border-none bg-blue-50/50"
               >
                 <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-medical-primary mb-6">
@@ -344,8 +358,12 @@ export default function App() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Diagnostics Card */}
-              <motion.div 
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 whileHover={{ y: -10 }}
+                transition={{ delay: 0.16, duration: 0.6 }}
                 className="medical-card p-0 flex flex-col border-none shadow-sm bg-white"
               >
                 <div className="p-8">
@@ -361,8 +379,12 @@ export default function App() {
               </motion.div>
 
               {/* Teleconsultation Card (Highlight) */}
-              <motion.div 
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 whileHover={{ y: -10 }}
+                transition={{ delay: 0.24, duration: 0.6 }}
                 className="medical-card border-none bg-medical-primary text-white flex flex-col justify-center items-start overflow-hidden relative"
               >
                 <div className="absolute top-0 right-0 p-8 opacity-10">
@@ -379,8 +401,12 @@ export default function App() {
               </motion.div>
 
               {/* Prevention Card */}
-              <motion.div 
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 whileHover={{ y: -10 }}
+                transition={{ delay: 0.32, duration: 0.6 }}
                 className="medical-card border-none bg-slate-50/50"
               >
                 <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-medical-primary mb-6">
