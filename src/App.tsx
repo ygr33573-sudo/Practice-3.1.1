@@ -421,7 +421,13 @@ export default function App() {
         {/* Interaction / Areas */}
         <section id="domaines" className="bg-slate-50 py-24">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="flex justify-between items-end mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex justify-between items-end mb-16"
+            >
               <div>
                 <h2 className="text-3xl font-display font-medium mb-4">Domaines d'Intervention</h2>
                 <p className="text-medical-muted max-w-lg">Des solutions médicales complètes pour toute la famille, de la prévention au suivi thérapeutique spécialisé.</p>
@@ -430,16 +436,16 @@ export default function App() {
                 <span>Voir tous les services</span>
                 <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
               </button>
-            </div>
+            </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {domains.map((domain, i) => (
-                <motion.div 
+                <motion.div
                   key={domain.title}
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.08 + 0.16, duration: 0.6 }}
                   className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all h-[400px] flex flex-col"
                 >
                   <div className="h-48 overflow-hidden">
