@@ -28,7 +28,7 @@
 }
 
 .medical-card {
-  @apply bg-white border border-slate-100 rounded-3xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5;
+  @apply bg-white border border-slate-100 rounded-3xl p-6 hover:shadow-xl hover:shadow-blue-500/5;
 }
 
 .btn-primary {
