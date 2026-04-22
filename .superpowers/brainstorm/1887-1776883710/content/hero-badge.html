@@ -1,0 +1,39 @@
+<h2>Hero badge — fix the broken animation</h2>
+<p class="subtitle">The "Disponibilité — Rendez-vous sous 48h" card in the bottom-left of the hero image has <code>animate-bounce-subtle</code> referenced but undefined. What should it do?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Gentle float (subtle infinite)</h3>
+      <p>A slow, continuous up-down drift — moves ~6px over 3 seconds, easing in and out. Draws the eye just enough to signal availability without distracting from the main content. Professional-level motion used on clinic and SaaS sites.</p>
+      <div style="margin-top:16px">
+        <div style="display:inline-flex;align-items:center;gap:12px;background:white;border-radius:16px;padding:14px 20px;box-shadow:0 4px 20px rgba(0,0,0,0.1);animation:float-demo 3s ease-in-out infinite">
+          <div style="width:40px;height:40px;background:#f0fdf4;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px">🕐</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:#1e293b">Disponibilité</div>
+            <div style="font-size:11px;color:#64748b;font-style:italic">Rendez-vous sous 48h</div>
+          </div>
+        </div>
+      </div>
+      <style>@keyframes float-demo { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }</style>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Static — just fade in on load</h3>
+      <p>The badge appears with the rest of the hero (fade + slight upward slide), then sits perfectly still. No looping animation. Clean, calm, no distraction. Best if you want zero movement after page load.</p>
+      <div style="margin-top:16px">
+        <div style="display:inline-flex;align-items:center;gap:12px;background:white;border-radius:16px;padding:14px 20px;box-shadow:0 4px 20px rgba(0,0,0,0.1)">
+          <div style="width:40px;height:40px;background:#f0fdf4;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px">🕐</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:#1e293b">Disponibilité</div>
+            <div style="font-size:11px;color:#64748b;font-style:italic">Rendez-vous sous 48h</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<h2>What animation feel fits Cabinet Dr. Benali?</h2>
+<p class="subtitle">The site is a professional French medical clinic. Animations should support trust and clarity — not distract. Pick the direction that feels right.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Subtle & Institutional</h3>
+      <p>Gentle fade-ins and soft upward slides when sections enter the viewport. No bouncing, no spring physics. Everything feels calm, deliberate, and trustworthy — like a high-end clinic brochure come to life.</p>
+      <ul style="margin-top:10px;padding-left:18px;font-size:13px;color:#888;line-height:1.7">
+        <li>Fade + slight Y-translate on scroll-enter</li>
+        <li>Staggered card reveals (0.08s between each)</li>
+        <li>Smooth hover lifts on cards (already there)</li>
+        <li>No number counters, no scale pops</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Modern & Engaging</h3>
+      <p>Scroll-triggered reveals with a bit more energy — number counters on stats, a subtle parallax drift on the hero image, and a gentle floating pulse on the hero badge. Still professional, but with visible motion DNA.</p>
+      <ul style="margin-top:10px;padding-left:18px;font-size:13px;color:#888;line-height:1.7">
+        <li>Animated number counters (15+, 5k+, 98%)</li>
+        <li>Hero badge: gentle float/bounce animation</li>
+        <li>Section headings slide in before cards stagger</li>
+        <li>Entrance animations on ALL sections currently missing them</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Polished & Cinematic</h3>
+      <p>Rich entrance choreography: hero text reveals word-by-word, a slow ken-burns on the hero image, parallax depth on background blobs, and a smooth sliding testimonial carousel. The kind of feel you'd see on a premium private clinic site.</p>
+      <ul style="margin-top:10px;padding-left:18px;font-size:13px;color:#888;line-height:1.7">
+        <li>Word-by-word or line-by-line hero text reveal</li>
+        <li>Ken-burns effect on hero image (slow zoom)</li>
+        <li>Auto-sliding testimonial carousel with transitions</li>
+        <li>Parallax scrolling on decorative blobs</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:24px;padding:16px 20px;background:#f8fafc;border-radius:12px;border:1px solid #e2e8f0">
+  <p style="font-size:13px;color:#64748b;margin:0"><strong>Current state:</strong> The site already has hero entrance animations, mobile menu transitions, stats card stagger, and domain card stagger. It's missing entrance animations for the Services section, Testimonials, CTA, and Contact — and the hero badge CSS class <code>animate-bounce-subtle</code> is defined but never declared in index.css.</p>
+</div>

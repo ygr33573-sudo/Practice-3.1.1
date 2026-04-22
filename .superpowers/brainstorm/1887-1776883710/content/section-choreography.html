@@ -1,0 +1,64 @@
+<h2>How should sections reveal as you scroll?</h2>
+<p class="subtitle">When a section like "Services" or "Testimonials" comes into view — does the heading animate in before the cards, or does everything fade in together?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Heading first, then cards</h3>
+      <p>The section heading and subtitle slide in slightly ahead of the cards. Creates a clear visual hierarchy — you read the label, then the content cascades in below it.</p>
+      <div style="margin-top:14px;background:#f1f5f9;border-radius:10px;padding:14px 16px;font-size:12px;color:#475569;line-height:2">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <div style="width:60px;height:8px;background:#1976D2;border-radius:4px;opacity:0.7"></div>
+          <span>↑ Heading fades in (t=0ms)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <div style="width:40px;height:8px;background:#94a3b8;border-radius:4px"></div>
+          <span>↑ Subtitle fades in (t=80ms)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <div style="width:32px;height:8px;background:#e2e8f0;border-radius:4px"></div>
+          <span>↑ Card 1 (t=160ms)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <div style="width:32px;height:8px;background:#e2e8f0;border-radius:4px"></div>
+          <span>↑ Card 2 (t=240ms)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:32px;height:8px;background:#e2e8f0;border-radius:4px"></div>
+          <span>↑ Card 3 (t=320ms)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Everything together, cards stagger</h3>
+      <p>The heading is already visible (no animation), and the cards stagger in as the section scrolls into view. Cleaner, less orchestrated — the content is the focus, not the reveal.</p>
+      <div style="margin-top:14px;background:#f1f5f9;border-radius:10px;padding:14px 16px;font-size:12px;color:#475569;line-height:2">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <div style="width:60px;height:8px;background:#94a3b8;border-radius:4px"></div>
+          <span>↑ Heading — static, always visible</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <div style="width:32px;height:8px;background:#1976D2;border-radius:4px;opacity:0.7"></div>
+          <span>↑ Card 1 fades in (t=0ms)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <div style="width:32px;height:8px;background:#1976D2;border-radius:4px;opacity:0.5"></div>
+          <span>↑ Card 2 (t=80ms)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:32px;height:8px;background:#1976D2;border-radius:4px;opacity:0.3"></div>
+          <span>↑ Card 3 (t=160ms)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:20px;padding:14px 18px;background:#eff6ff;border-radius:12px;border:1px solid #bfdbfe">
+  <p style="font-size:13px;color:#1e40af;margin:0">This applies to: <strong>Services</strong>, <strong>Testimonials</strong>, <strong>CTA</strong>, and <strong>Contact</strong> sections — the four sections currently lacking scroll animations.</p>
+</div>

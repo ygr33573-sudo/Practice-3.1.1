@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation Comparison — Before vs After</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1976D2;
+      --blue-dark: #0D47A1;
+      --blue-light: #E3F2FD;
+      --bg: #F8FAFC;
+      --text: #1E293B;
+      --muted: #64748B;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: var(--text);
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      color: white;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: #94a3b8;
+      text-align: center;
+      font-size: 0.875rem;
+      margin-bottom: 24px;
+    }
+
+    .replay-btn {
+      display: block;
+      margin: 0 auto 32px;
+      background: var(--blue);
+      color: white;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 9999px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .replay-btn:hover { background: var(--blue-dark); transform: scale(1.03); }
+    .replay-btn:active { transform: scale(0.97); }
+
+    /* Two-column layout */
+    .section-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .panel {
+      background: var(--bg);
+      border-radius: 20px;
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .panel-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      display: inline-block;
+    }
+
+    .before-label { background: #fef2f2; color: #dc2626; }
+    .after-label  { background: #f0fdf4; color: #16a34a; }
+
+    .section-title {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+
+    /* ───── CARDS ───── */
+    .card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card-icon {
+      width: 40px; height: 40px;
+      background: var(--blue-light);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .card-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Stats grid */
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stat-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+    /* CTA block */
+    .cta-block {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 24px;
+    }
+    .cta-heading {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .cta-para { font-size: 0.82rem; color: var(--muted); margin-bottom: 16px; line-height: 1.5; }
+    .cta-buttons { display: flex; gap: 10px; }
+    .btn-primary-demo {
+      background: var(--blue);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: default;
+    }
+    .btn-secondary-demo {
+      background: var(--blue-light);
+      color: var(--blue);
+      border: none;
+      padding: 8px 20px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: default;
+    }
+
+    /* Badge */
+    .badge-container { position: relative; height: 100px; }
+    .badge {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .badge-dot { width: 10px; height: 10px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+    .badge-text { font-size: 0.82rem; font-weight: 500; }
+    .badge-sub  { font-size: 0.72rem; color: var(--muted); }
+
+    /* Heading block */
+    .heading-block { margin-bottom: 16px; }
+    .section-heading {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .section-sub { font-size: 0.8rem; color: var(--muted); }
+
+    /* Contact list */
+    .contact-list { list-style: none; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-icon {
+      width: 32px; height: 32px;
+      background: var(--blue-light);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .map-block {
+      background: #e2e8f0;
+      border-radius: 16px;
+      height: 80px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-top: 12px;
+    }
+
+    /* ═══════════════════════════════════
+       ANIMATION CLASSES (AFTER column)
+       ═══════════════════════════════════ */
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes fadeSlideInSmall {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.98) translateY(0); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Paused state — all animated children invisible */
+    .after-panel .animated { opacity: 0; }
+
+    /* Running state */
+    .after-panel.running .anim-fade-slide {
+      animation: fadeSlideIn 0.6s ease-out forwards;
+    }
+    .after-panel.running .anim-fade-only {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    .after-panel.running .anim-badge {
+      animation: fadeSlideInSmall 0.5s ease-out 0.8s forwards;
+    }
+    .after-panel.running .anim-scale {
+      animation: scaleIn 0.6s ease-out forwards;
+    }
+
+    /* Stagger delays */
+    .d-0   { animation-delay: 0s; }
+    .d-08  { animation-delay: 0.08s; }
+    .d-16  { animation-delay: 0.16s; }
+    .d-24  { animation-delay: 0.24s; }
+    .d-32  { animation-delay: 0.32s; }
+    .d-40  { animation-delay: 0.40s; }
+    .d-48  { animation-delay: 0.48s; }
+
+    /* Hover on service cards in AFTER column */
+    .after-panel .card-hoverable {
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
+      cursor: pointer;
+    }
+    .after-panel .card-hoverable:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 40px rgba(25, 118, 210, 0.12);
+    }
+
+    /* Section divider label */
+    .section-divider {
+      color: #475569;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 8px 0 16px;
+    }
+
+    /* Dimmed heading text in testimonials (matches opacity-60 removal) */
+    .label-muted { color: #64748B; font-size: 0.75rem; font-weight: 500; }
+  </style>
+</head>
+<body>
+
+  <h1>Animation Changes — Before vs After</h1>
+  <p class="subtitle">Left = static (before) &nbsp;·&nbsp; Right = animated (after) &nbsp;·&nbsp; Hover service cards on the right</p>
+  <button class="replay-btn" onclick="replay()">↺ &nbsp;Replay Animations</button>
+
+  <!-- ─── BADGE ─── -->
+  <p class="section-divider">Hero Badge &nbsp;(was broken CSS class, now Framer Motion fade-in after 0.8s)</p>
+  <div class="section-row">
+    <div class="panel">
+      <span class="panel-label before-label">Before — static, no effect</span>
+      <div class="badge-container">
+        <div class="badge">
+          <div class="badge-dot"></div>
+          <div>
+            <div class="badge-text">Disponible aujourd'hui</div>
+            <div class="badge-sub">Consultations disponibles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel after-panel" id="badge-panel">
+      <span class="panel-label after-label">After — fades in at t=0.8s</span>
+      <div class="badge-container">
+        <div class="badge animated anim-badge d-0">
+          <div class="badge-dot"></div>
+          <div>
+            <div class="badge-text">Disponible aujourd'hui</div>
+            <div class="badge-sub">Consultations disponibles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── STATS ─── -->
+  <p class="section-divider">Stats Section &nbsp;(heading now animated, cards stagger refined to 0.08s)</p>
+  <div class="section-row">
+    <div class="panel">
+      <span class="panel-label before-label">Before — heading static, cards 0.1s stagger</span>
+      <div class="heading-block">
+        <div class="section-heading">Pourquoi nous choisir ?</div>
+        <div class="section-sub">Une médecine de qualité, proche de vous</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-number">15+</div><div class="stat-label">Années d'expérience</div></div>
+        <div class="stat-card"><div class="stat-number">5000+</div><div class="stat-label">Patients suivis</div></div>
+        <div class="stat-card"><div class="stat-number">98%</div><div class="stat-label">Satisfaction</div></div>
+        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Spécialités</div></div>
+      </div>
+    </div>
+    <div class="panel after-panel" id="stats-panel">
+      <span class="panel-label after-label">After — heading animates first, cards follow</span>
+      <div class="heading-block animated anim-fade-slide d-0">
+        <div class="section-heading">Pourquoi nous choisir ?</div>
+        <div class="section-sub">Une médecine de qualité, proche de vous</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card animated anim-fade-slide d-16"><div class="stat-number">15+</div><div class="stat-label">Années d'expérience</div></div>
+        <div class="stat-card animated anim-fade-slide d-24"><div class="stat-number">5000+</div><div class="stat-label">Patients suivis</div></div>
+        <div class="stat-card animated anim-fade-slide d-32"><div class="stat-number">98%</div><div class="stat-label">Satisfaction</div></div>
+        <div class="stat-card animated anim-fade-slide d-40"><div class="stat-number">3</div><div class="stat-label">Spécialités</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SERVICES ─── -->
+  <p class="section-divider">Services Section &nbsp;(entirely new: heading + entrance + hover on cards)</p>
+  <div class="section-row">
+    <div class="panel">
+      <span class="panel-label before-label">Before — heading static, cards appear instantly</span>
+      <div class="heading-block">
+        <div class="section-heading">Nos Services</div>
+        <div class="section-sub">Des soins adaptés à chaque patient</div>
+      </div>
+      <div class="card"><div class="card-icon">🏥</div><div class="card-title">Médecine générale</div><div class="card-desc">Consultations et suivis médicaux complets</div></div>
+      <div class="card"><div class="card-icon">💊</div><div class="card-title">Prescription</div><div class="card-desc">Ordonnances et renouvellements</div></div>
+    </div>
+    <div class="panel after-panel" id="services-panel">
+      <span class="panel-label after-label">After — heading leads, cards slide in, hover = lift</span>
+      <div class="heading-block animated anim-fade-slide d-0">
+        <div class="section-heading">Nos Services</div>
+        <div class="section-sub">Des soins adaptés à chaque patient</div>
+      </div>
+      <div class="card card-hoverable animated anim-fade-slide d-16"><div class="card-icon">🏥</div><div class="card-title">Médecine générale</div><div class="card-desc">Consultations et suivis médicaux complets</div></div>
+      <div class="card card-hoverable animated anim-fade-slide d-24"><div class="card-icon">💊</div><div class="card-title">Prescription</div><div class="card-desc">Ordonnances et renouvellements</div></div>
+    </div>
+  </div>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <p class="section-divider">Testimonials Section &nbsp;(entirely new: label → quote → attribution → stats)</p>
+  <div class="section-row">
+    <div class="panel">
+      <span class="panel-label before-label">Before — all static, no animation at all</span>
+      <div class="label-muted" style="margin-bottom:10px">Paroles de patients</div>
+      <div class="card" style="margin-bottom:10px">
+        <div class="card-desc" style="font-style:italic;font-size:0.9rem;color:#334155;">"Le docteur Benali est exceptionnel. Il prend le temps d'écouter."</div>
+        <div style="margin-top:12px;font-size:0.78rem;color:var(--muted)">— Marie L., patiente depuis 8 ans</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-number">4.9★</div><div class="stat-label">Note Google</div></div>
+        <div class="stat-card"><div class="stat-number">200+</div><div class="stat-label">Avis vérifiés</div></div>
+      </div>
+    </div>
+    <div class="panel after-panel" id="testimonials-panel">
+      <span class="panel-label after-label">After — label → quote → attribution → stats</span>
+      <div class="label-muted animated anim-fade-only d-0" style="margin-bottom:10px">Paroles de patients</div>
+      <div class="card animated anim-fade-slide d-08" style="margin-bottom:10px">
+        <div class="card-desc" style="font-style:italic;font-size:0.9rem;color:#334155;">"Le docteur Benali est exceptionnel. Il prend le temps d'écouter."</div>
+        <div class="animated anim-fade-only d-16" style="margin-top:12px;font-size:0.78rem;color:var(--muted)">— Marie L., patiente depuis 8 ans</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card animated anim-fade-slide d-16"><div class="stat-number">4.9★</div><div class="stat-label">Note Google</div></div>
+        <div class="stat-card animated anim-fade-slide d-24"><div class="stat-number">200+</div><div class="stat-label">Avis vérifiés</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── CTA ─── -->
+  <p class="section-divider">CTA Section &nbsp;(entirely new: heading → paragraph → buttons)</p>
+  <div class="section-row">
+    <div class="panel">
+      <span class="panel-label before-label">Before — block appears at once, no animation</span>
+      <div class="cta-block">
+        <div class="cta-heading">Prenez soin de votre santé</div>
+        <div class="cta-para">Prenez rendez-vous dès aujourd'hui et bénéficiez d'un suivi médical personnalisé.</div>
+        <div class="cta-buttons">
+          <button class="btn-primary-demo">Prendre rendez-vous</button>
+          <button class="btn-secondary-demo">Nous contacter</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel after-panel" id="cta-panel">
+      <span class="panel-label after-label">After — heading leads, text, then buttons</span>
+      <div class="cta-block">
+        <div class="cta-heading animated anim-fade-slide d-0">Prenez soin de votre santé</div>
+        <div class="cta-para animated anim-fade-only d-08">Prenez rendez-vous dès aujourd'hui et bénéficiez d'un suivi médical personnalisé.</div>
+        <div class="cta-buttons animated anim-fade-slide d-16" style="--start-y:10px">
+          <button class="btn-primary-demo">Prendre rendez-vous</button>
+          <button class="btn-secondary-demo">Nous contacter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── CONTACT ─── -->
+  <p class="section-divider">Contact Section &nbsp;(entirely new: heading → list items → map)</p>
+  <div class="section-row">
+    <div class="panel">
+      <span class="panel-label before-label">Before — all static</span>
+      <div class="section-heading" style="margin-bottom:12px;font-size:1.1rem">Nous trouver</div>
+      <ul class="contact-list">
+        <li class="contact-item"><div class="contact-icon">📍</div><div>12 Rue de la Santé, Alger</div></li>
+        <li class="contact-item"><div class="contact-icon">🕐</div><div>Lun–Ven 8h–18h</div></li>
+        <li class="contact-item"><div class="contact-icon">📞</div><div>+213 21 XX XX XX</div></li>
+      </ul>
+      <div class="map-block">Carte Google Maps</div>
+    </div>
+    <div class="panel after-panel" id="contact-panel">
+      <span class="panel-label after-label">After — heading → items stagger → map scales in</span>
+      <div class="section-heading animated anim-fade-slide d-0" style="margin-bottom:12px;font-size:1.1rem">Nous trouver</div>
+      <ul class="contact-list">
+        <li class="contact-item animated anim-fade-slide d-08"><div class="contact-icon">📍</div><div>12 Rue de la Santé, Alger</div></li>
+        <li class="contact-item animated anim-fade-slide d-16"><div class="contact-icon">🕐</div><div>Lun–Ven 8h–18h</div></li>
+        <li class="contact-item animated anim-fade-slide d-24"><div class="contact-icon">📞</div><div>+213 21 XX XX XX</div></li>
+      </ul>
+      <div class="map-block animated anim-scale d-24">Carte Google Maps</div>
+    </div>
+  </div>
+
+  <script>
+    const panels = ['badge-panel','stats-panel','services-panel','testimonials-panel','cta-panel','contact-panel'];
+
+    function replay() {
+      panels.forEach(id => {
+        const el = document.getElementById(id);
+        el.classList.remove('running');
+        // Force reflow so removing the class takes effect
+        void el.offsetWidth;
+        el.classList.add('running');
+      });
+    }
+
+    // Auto-play on load after a brief pause so page settles
+    window.addEventListener('load', () => {
+      setTimeout(replay, 300);
+    });
+  </script>
+</body>
+</html>
+```

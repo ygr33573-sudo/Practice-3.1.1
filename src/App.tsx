@@ -40,7 +40,6 @@ const navLinks = [
   { name: 'Accueil', href: '#' },
   { name: 'Services', href: '#services' },
   { name: 'Domaines', href: '#domaines' },
-  { name: 'Rendez-vous', href: '#rdv' },
   { name: 'Contact', href: '#contact' },
 ];
 
