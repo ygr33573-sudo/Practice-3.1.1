@@ -353,7 +353,7 @@ export default function App() {
               </motion.div>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8 items-stretch">
               {/* Diagnostics Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -362,7 +362,7 @@ export default function App() {
                 whileHover={{ y: -10, transition: { delay: 0, duration: 0.18, ease: "easeOut" } }}
                 className="medical-card p-0 flex flex-col border-none shadow-sm bg-white"
               >
-                <div className="p-8">
+                <div className="p-6">
                   <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-medical-primary mb-6">
                     <FlaskConical size={24} />
                   </div>
@@ -389,7 +389,7 @@ export default function App() {
                   <Smartphone size={24} />
                 </div>
                 <h3 className="text-2xl font-display font-semibold mb-4">Téléconsultation</h3>
-                <p className="text-blue-100 mb-8 leading-relaxed">Consultez à distance en toute sécurité. Idéal pour le renouvellement d'ordonnances ou les suivis simples.</p>
+                <p className="text-white mb-8 leading-relaxed">Consultez à distance en toute sécurité. Idéal pour le renouvellement d'ordonnances ou les suivis simples.</p>
                 <button className="bg-white text-medical-primary px-8 py-3 rounded-2xl font-semibold transition-all hover:bg-blue-50 active:scale-95">
                   Prendre RDV en ligne
                 </button>
