@@ -576,10 +576,22 @@ export default function App() {
             <div className="grid lg:grid-cols-2 gap-16">
               <div className="space-y-12">
                 <div>
-                  <h2 className="text-4xl font-display font-medium mb-8 italic">Nous trouver</h2>
-                  
+                  <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-4xl font-display font-medium mb-8 italic"
+                  >Nous trouver</motion.h2>
+
                   <ul className="space-y-8">
-                    <li className="flex gap-6">
+                    <motion.li
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.08, duration: 0.6 }}
+                      className="flex gap-6"
+                    >
                       <div className="flex-shrink-0 w-10 h-10 bg-blue-50 text-medical-primary rounded-xl flex items-center justify-center">
                         <MapPin size={20} />
                       </div>
@@ -587,8 +599,14 @@ export default function App() {
                         <p className="font-semibold text-lg mb-1">Adresse</p>
                         <p className="text-medical-muted">45 Boulevard Mohamed V, Bureau 12<br />Casablanca, 20000</p>
                       </div>
-                    </li>
-                    <li className="flex gap-6">
+                    </motion.li>
+                    <motion.li
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.16, duration: 0.6 }}
+                      className="flex gap-6"
+                    >
                       <div className="flex-shrink-0 w-10 h-10 bg-blue-50 text-medical-primary rounded-xl flex items-center justify-center">
                         <Clock size={20} />
                       </div>
@@ -596,8 +614,14 @@ export default function App() {
                         <p className="font-semibold text-lg mb-1">Horaires d'ouverture</p>
                         <p className="text-medical-muted">Lundi - Vendredi: 09:00 - 18:00<br />Samedi: 09:00 - 13:00</p>
                       </div>
-                    </li>
-                    <li className="flex gap-6">
+                    </motion.li>
+                    <motion.li
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.24, duration: 0.6 }}
+                      className="flex gap-6"
+                    >
                       <div className="flex-shrink-0 w-10 h-10 bg-blue-50 text-medical-primary rounded-xl flex items-center justify-center">
                         <Phone size={20} />
                       </div>
@@ -605,18 +629,24 @@ export default function App() {
                         <p className="font-semibold text-lg mb-1">Téléphone</p>
                         <p className="text-medical-muted">05 22 00 00 00</p>
                       </div>
-                    </li>
+                    </motion.li>
                   </ul>
                 </div>
               </div>
 
-              <div className="relative">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.98 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.24, duration: 0.6 }}
+                className="relative"
+              >
                 <div className="aspect-square bg-slate-100 rounded-[40px] overflow-hidden group">
-                  <iframe 
+                  <iframe
                     title="Map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106371.18520862562!2d-7.6570335!3d33.5719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd4778aa113b%3A0xb06c1d84f310fd3!2sCasablanca!5e0!3m2!1sfr!2sma!4v1620000000000!5m2!1sfr!2sma" 
-                    className="w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-700" 
-                    allowFullScreen 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106371.18520862562!2d-7.6570335!3d33.5719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd4778aa113b%3A0xb06c1d84f310fd3!2sCasablanca!5e0!3m2!1sfr!2sma!4v1620000000000!5m2!1sfr!2sma"
+                    className="w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-700"
+                    allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
@@ -627,7 +657,7 @@ export default function App() {
                   </div>
                   <span className="text-xs font-semibold uppercase tracking-widest italic">Acces PMR & Ascenseur</span>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
