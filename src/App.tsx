@@ -224,7 +224,12 @@ export default function App() {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-3xl shadow-xl z-20 flex items-center gap-4 animate-bounce-subtle">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+                className="absolute -bottom-8 -left-8 bg-white p-6 rounded-3xl shadow-xl z-20 flex items-center gap-4"
+              >
                 <div className="w-12 h-12 bg-green-50 text-green-600 rounded-full flex items-center justify-center">
                   <Clock size={24} />
                 </div>
@@ -232,7 +237,7 @@ export default function App() {
                   <p className="text-sm font-semibold">Disponibilité</p>
                   <p className="text-xs text-medical-muted italic">Rendez-vous sous 48h</p>
                 </div>
-              </div>
+              </motion.div>
               <div className="absolute -top-12 -right-12 w-64 h-64 bg-medical-secondary rounded-full filter blur-3xl opacity-50 z-0"></div>
             </motion.div>
           </div>
