@@ -300,10 +300,9 @@ export default function App() {
               {/* Consultation Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.16, duration: 0.6 } }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                transition={{ delay: 0.16, duration: 0.6 }}
+                whileHover={{ y: -10, transition: { delay: 0, duration: 0.18, ease: "easeOut" } }}
                 className="md:col-span-2 medical-card p-0 flex flex-col md:flex-row overflow-hidden border-none shadow-sm bg-slate-50"
               >
                 <div className="p-8 md:w-3/5 flex flex-col justify-center">
@@ -334,10 +333,9 @@ export default function App() {
               {/* Specialised Care Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.24, duration: 0.6 } }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                transition={{ delay: 0.24, duration: 0.6 }}
+                whileHover={{ y: -10, transition: { delay: 0, duration: 0.18, ease: "easeOut" } }}
                 className="medical-card border-none bg-blue-50/50"
               >
                 <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-medical-primary mb-6">
@@ -360,10 +358,9 @@ export default function App() {
               {/* Diagnostics Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.16, duration: 0.6 } }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                transition={{ delay: 0.16, duration: 0.6 }}
+                whileHover={{ y: -10, transition: { delay: 0, duration: 0.18, ease: "easeOut" } }}
                 className="medical-card p-0 flex flex-col border-none shadow-sm bg-white"
               >
                 <div className="p-8">
@@ -381,10 +378,9 @@ export default function App() {
               {/* Teleconsultation Card (Highlight) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.24, duration: 0.6 } }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                transition={{ delay: 0.24, duration: 0.6 }}
+                whileHover={{ y: -10, transition: { delay: 0, duration: 0.18, ease: "easeOut" } }}
                 className="medical-card border-none bg-medical-primary text-white flex flex-col justify-center items-start overflow-hidden relative"
               >
                 <div className="absolute top-0 right-0 p-8 opacity-10">
@@ -403,10 +399,9 @@ export default function App() {
               {/* Prevention Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0, transition: { delay: 0.32, duration: 0.6 } }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                transition={{ delay: 0.32, duration: 0.6 }}
+                whileHover={{ y: -10, transition: { delay: 0, duration: 0.18, ease: "easeOut" } }}
                 className="medical-card border-none bg-slate-50/50"
               >
                 <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-medical-primary mb-6">
