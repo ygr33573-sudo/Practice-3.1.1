@@ -475,10 +475,21 @@ export default function App() {
         <section className="bg-medical-text text-white py-24 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-900/10 pointer-events-none"></div>
           <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="italic uppercase text-xs font-bold tracking-[0.2em] mb-12 opacity-60 text-center">Paroles de patients</div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 0.6 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="italic uppercase text-xs font-bold tracking-[0.2em] mb-12 text-center"
+            >Paroles de patients</motion.div>
             
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.08, duration: 0.6 }}
+              >
                 <MessageSquare size={48} className="text-medical-primary mb-8" />
                 <blockquote className="text-3xl font-display font-medium leading-normal mb-8">
                   "Un médecin à l'écoute et très compétent. Le cabinet est moderne et le temps d'attente est minimal. Je recommande vivement le Dr. Benali pour son professionnalisme."
@@ -492,7 +503,7 @@ export default function App() {
                     <p className="text-sm opacity-50 italic">Patient depuis 2019</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               <div className="grid grid-cols-2 gap-6">
                 {[
@@ -500,11 +511,18 @@ export default function App() {
                   { label: "Consultations", value: "12k+" },
                   { label: "Taux de satisfaction", value: "98%" },
                   { label: "Spécialités", value: "4" }
-                ].map(stat => (
-                  <div key={stat.label} className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
+                ].map((stat, i) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 + 0.16, duration: 0.6 }}
+                    className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm"
+                  >
                     <p className="text-4xl font-display font-medium mb-2">{stat.value}</p>
                     <p className="text-xs opacity-50 uppercase tracking-widest">{stat.label}</p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
