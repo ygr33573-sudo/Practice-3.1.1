@@ -246,19 +246,25 @@ export default function App() {
         {/* Info Cards / Stats */}
         <section className="bg-white py-24">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
               <h2 className="text-3xl font-display font-medium mb-4">Pourquoi nous choisir ?</h2>
               <p className="text-medical-muted max-w-2xl mx-auto">Une approche moderne de la médecine centrée sur le confort et la précision du diagnostic.</p>
-            </div>
+            </motion.div>
             
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat, i) => (
-                <motion.div 
+                <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.08 + 0.16, duration: 0.6 }}
                   className="medical-card text-center"
                 >
                   <p className="text-4xl font-display font-semibold text-medical-primary mb-2 tracking-tighter">{stat.value}</p>
