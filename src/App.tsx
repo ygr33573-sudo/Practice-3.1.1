@@ -534,11 +534,29 @@ export default function App() {
           <div className="bg-medical-primary rounded-[40px] p-12 lg:p-24 text-center text-white relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1)_0%,transparent_70%)]"></div>
             <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="text-4xl lg:text-5xl font-display font-medium mb-8">Prenez soin de votre santé dès aujourd’hui</h2>
-              <p className="text-lg text-blue-100 mb-12 italic">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-4xl lg:text-5xl font-display font-medium mb-8"
+              >Prenez soin de votre santé dès aujourd’hui</motion.h2>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.08, duration: 0.6 }}
+                className="text-lg text-blue-100 mb-12 italic"
+              >
                 Réservez votre créneau en ligne en moins de 2 minutes. Notre équipe vous recontactera pour confirmer le rendez-vous.
-              </p>
-              <div className="flex flex-wrap justify-center gap-6">
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.16, duration: 0.6 }}
+                className="flex flex-wrap justify-center gap-6"
+              >
                 <button className="bg-white text-medical-primary px-10 py-4 rounded-2xl font-bold transition-all hover:bg-blue-50 active:scale-95 flex items-center gap-2">
                   <Smartphone size={20} />
                   <span>Réserver en ligne</span>
@@ -547,7 +565,7 @@ export default function App() {
                   <Phone size={20} />
                   <span>05 22 00 00 00</span>
                 </button>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
