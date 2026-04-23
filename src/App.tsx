@@ -302,9 +302,9 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0, transition: { delay: 0.16, duration: 0.6 } }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10, transition: { delay: 0, duration: 0.18, ease: "easeOut" } }}
-                className="md:col-span-2 medical-card p-0 flex flex-col md:flex-row overflow-hidden border-none shadow-sm bg-slate-50"
+                className="md:col-span-2 medical-card p-0 flex flex-col md:flex-row overflow-hidden bg-white"
               >
-                <div className="p-8 md:w-3/5 flex flex-col justify-center">
+                <div className="p-8 md:w-3/5 flex flex-col">
                   <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-medical-primary mb-6">
                     <Stethoscope size={24} />
                   </div>
@@ -323,9 +323,11 @@ export default function App() {
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                   </button>
                 </div>
-                <div className="md:w-2/5 relative h-64 md:h-auto">
-                  <img src={consultationImage} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-blue-900/10"></div>
+                <div className="md:w-2/5 h-64 md:h-auto md:p-4">
+                  <div className="relative h-full md:rounded-3xl overflow-hidden">
+                    <img src={consultationImage} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-blue-900/10"></div>
+                  </div>
                 </div>
               </motion.div>
 
@@ -335,16 +337,23 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0, transition: { delay: 0.24, duration: 0.6 } }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10, transition: { delay: 0, duration: 0.18, ease: "easeOut" } }}
-                className="medical-card border-none bg-blue-50/50"
+                className="medical-card p-8 bg-white flex flex-col"
               >
-                <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-medical-primary mb-6">
+                <div className="w-12 h-12 bg-medical-secondary rounded-xl flex items-center justify-center text-medical-primary mb-6">
                   <HeartPulse size={24} />
                 </div>
                 <h3 className="text-2xl font-display font-semibold mb-4">Soins Spécialisés</h3>
-                <p className="text-medical-muted mb-8 italic">Expertise pointue en cardiologie et nutrition pour un accompagnement spécifique et durable.</p>
-                <div className="flex flex-wrap gap-2 mb-8">
-                  <span className="px-3 py-1 bg-white rounded-full text-xs font-semibold">Cardiologie</span>
-                  <span className="px-3 py-1 bg-white rounded-full text-xs font-semibold">Nutrition</span>
+                <p className="text-medical-muted mb-6">Expertise pointue en cardiologie et nutrition pour un accompagnement spécifique et durable.</p>
+                <ul className="grid gap-2 mb-8">
+                  {['ECG et bilan cardiologique', 'Suivi nutritionnel personnalisé'].map(f => (
+                    <li key={f} className="flex items-center gap-2 text-sm font-medium">
+                      <CheckCircle2 size={16} className="text-medical-primary" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto mb-5 h-40 overflow-hidden rounded-2xl">
+                  <img src={cardiologieImage} className="w-full h-full object-cover" />
                 </div>
                 <button className="flex items-center gap-2 text-medical-primary font-semibold text-sm group">
                   <span>Détails</span>
@@ -360,17 +369,25 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0, transition: { delay: 0.16, duration: 0.6 } }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10, transition: { delay: 0, duration: 0.18, ease: "easeOut" } }}
-                className="medical-card p-0 flex flex-col border-none shadow-sm bg-white"
+                className="medical-card p-8 bg-white flex flex-col"
               >
-                <div className="p-6">
-                  <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-medical-primary mb-6">
-                    <FlaskConical size={24} />
-                  </div>
-                  <h3 className="text-2xl font-display font-semibold mb-4">Diagnostics</h3>
-                  <p className="text-medical-muted mb-6 leading-relaxed">Équipements de pointe pour des analyses précises sur place, garantissant une prise en charge rapide.</p>
+                <div className="w-12 h-12 bg-medical-secondary rounded-xl flex items-center justify-center text-medical-primary mb-6">
+                  <FlaskConical size={24} />
                 </div>
-                <div className="mt-auto h-48 overflow-hidden rounded-b-3xl">
-                  <img src={diagnosticsImage} className="w-full h-full object-cover grayscale opacity-80" />
+                <h3 className="text-2xl font-display font-semibold mb-4">Diagnostics</h3>
+                <p className="text-medical-muted mb-6 leading-relaxed">Équipements de pointe pour des analyses précises sur place, garantissant une prise en charge rapide.</p>
+                <ul className="grid gap-2 mb-8">
+                  {['Analyses sur place', 'Résultats rapides et fiables'].map(f => (
+                    <li key={f} className="flex items-center gap-2 text-sm font-medium">
+                      <CheckCircle2 size={16} className="text-medical-primary" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto">
+                  <div className="h-40 overflow-hidden rounded-2xl">
+                    <img src={diagnosticsImage} className="w-full h-full object-cover grayscale opacity-70" />
+                  </div>
                 </div>
               </motion.div>
 
@@ -380,7 +397,7 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0, transition: { delay: 0.24, duration: 0.6 } }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10, transition: { delay: 0, duration: 0.18, ease: "easeOut" } }}
-                className="medical-card border-none bg-medical-primary text-white flex flex-col justify-center items-start overflow-hidden relative"
+                className="rounded-3xl p-6 hover:shadow-xl hover:shadow-blue-500/5 bg-medical-primary text-white flex flex-col justify-center items-start overflow-hidden relative"
               >
                 <div className="absolute top-0 right-0 p-8 opacity-10">
                   <Smartphone size={160} />
@@ -389,7 +406,15 @@ export default function App() {
                   <Smartphone size={24} />
                 </div>
                 <h3 className="text-2xl font-display font-semibold mb-4">Téléconsultation</h3>
-                <p className="text-white mb-8 leading-relaxed">Consultez à distance en toute sécurité. Idéal pour le renouvellement d'ordonnances ou les suivis simples.</p>
+                <p className="text-white mb-6 leading-relaxed">Consultez à distance en toute sécurité. Idéal pour le renouvellement d'ordonnances ou les suivis simples.</p>
+                <ul className="grid gap-2 mb-8">
+                  {['Consultation vidéo sécurisée', 'Renouvellement d’ordonnance'].map(f => (
+                    <li key={f} className="flex items-center gap-2 text-sm font-medium text-white">
+                      <CheckCircle2 size={16} className="text-white" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
                 <button className="bg-white text-medical-primary px-8 py-3 rounded-2xl font-semibold transition-all hover:bg-blue-50 active:scale-95">
                   Prendre RDV en ligne
                 </button>
@@ -401,13 +426,24 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0, transition: { delay: 0.32, duration: 0.6 } }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10, transition: { delay: 0, duration: 0.18, ease: "easeOut" } }}
-                className="medical-card border-none bg-slate-50/50"
+                className="medical-card p-8 bg-white flex flex-col"
               >
-                <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-medical-primary mb-6">
+                <div className="w-12 h-12 bg-medical-secondary rounded-xl flex items-center justify-center text-medical-primary mb-6">
                   <ShieldCheck size={24} />
                 </div>
                 <h3 className="text-2xl font-display font-semibold mb-4">Prévention</h3>
-                <p className="text-medical-muted mb-8 italic">Programmes de dépistage et conseils personnalisés pour maintenir votre capital santé sur le long terme.</p>
+                <p className="text-medical-muted mb-6">Programmes de dépistage et conseils personnalisés pour maintenir votre capital santé sur le long terme.</p>
+                <ul className="grid gap-2 mb-8">
+                  {['Vaccination', 'Dépistage', 'Bilan annuel'].map(f => (
+                    <li key={f} className="flex items-center gap-2 text-sm font-medium">
+                      <CheckCircle2 size={16} className="text-medical-primary" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto mb-5 h-40 overflow-hidden rounded-2xl">
+                  <img src={medecineGeneraleImage} className="w-full h-full object-cover" />
+                </div>
                 <button className="flex items-center gap-2 text-medical-primary font-semibold text-sm group">
                   <span>Voir les programmes</span>
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
